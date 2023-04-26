@@ -1,0 +1,95 @@
+div#tableDiv {
+    text-align: center;
+    width: 100%;
+    padding-top: 2.5em;
+}
+
+table {
+    display: inline-block;
+    border-collapse: collapse;
+    /* width: 98%; */
+}
+
+html {
+    font-family: sans-serif;
+    width: 100%;
+}
+
+td {
+    border: 1px solid gainsboro;
+    text-align: left;
+    overflow: hidden;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    padding: 0.3em;
+}
+
+.controls {
+    padding: 0.6em;
+    text-align: center;
+    position: fixed;
+    background-color: white;
+    width: 100%;
+}
+
+input#queryInput {
+    width: 16em;
+    font-size: 1em;
+}
+
+.Modifiers {
+    display: none;
+}
+
+.Exception {
+    display: none;
+}
+
+body {
+    width: 100%;
+    margin: 0px;
+}
+
+div#rootDiv {
+    width: 100%;
+}
+
+th {
+    cursor: pointer;
+    position: sticky;
+    top: 2.5em;
+    background-color: white;
+    padding: 0.3em 0px;
+    border-left: 1px solid gainsboro;
+}
+
+::highlight(match) {
+    background-color: yellow;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+a:visited,a {color: mediumblue;}
+
+li {
+    margin: 0.5em;
+    font-size: 1.2em;
+ 
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+i {
+    visibility: hidden;
+}
