@@ -5,22 +5,23 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import static sample.Constants.OUT_PATH;
 import static sample.Constants.OUT_PATH2;
 
 public class Methods {
- 
+
     void run() throws IOException {
         List<String> classes = Files.readAllLines(OUT_PATH);
+        Files.write(OUT_PATH2, getMethods(classes));
+    }
 
-        List<String> methods = classes.stream().map(s -> {
+    List<String> getMethods(List<String> classes) throws IOException {
+
+        return classes.stream().map(s -> {
             Class clazz = null;
             try {
                 return Class.forName(s);
@@ -29,14 +30,13 @@ public class Methods {
             }
         })
                 .flatMap(c -> Arrays.stream(c.getMethods())
-                .filter(m -> c.isInterface() || (Modifier.isPublic(m.getModifiers())
-                && !Modifier.isAbstract(m.getModifiers()) && !Modifier.isNative(m.getModifiers())))
+                .filter(m -> c.isInterface()
+                || (Modifier.isPublic(m.getModifiers()) && !Modifier.isAbstract(m.getModifiers()) && !Modifier.isNative(m.getModifiers())))
                 .map(m -> methodToString(m, c.getTypeName()))
                 )
                 .toList();
-        Files.write(OUT_PATH2, methods);
     }
- 
+
     String methodToString(Method m, String clazz) {
         List<String> row = new LinkedList<>();
         row.add(m.getReturnType().getTypeName());
