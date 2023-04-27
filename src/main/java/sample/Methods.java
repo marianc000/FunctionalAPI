@@ -22,19 +22,21 @@ public class Methods {
     List<String> getMethods(List<String> classes) throws IOException {
 
         return classes.stream().map(s -> {
-            Class clazz = null;
             try {
                 return Class.forName(s);
             } catch (Exception ex) {
-                throw new RuntimeException(ex);
+                return null;
             }
         })
+                .filter(c -> c != null)
                 .flatMap(c -> Arrays.stream(c.getMethods())
                 .filter(m -> c.isInterface()
-                || (Modifier.isPublic(m.getModifiers()) && !Modifier.isAbstract(m.getModifiers()) && !Modifier.isNative(m.getModifiers())))
+                || (Modifier.isPublic(m.getModifiers())
+                && !Modifier.isAbstract(m.getModifiers())
+                && !Modifier.isNative(m.getModifiers())))
                 .map(m -> methodToString(m, c.getTypeName()))
                 )
-                .toList();
+                .collect(Collectors.toList());
     }
 
     String methodToString(Method m, String clazz) {

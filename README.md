@@ -1,4 +1,4 @@
-# Efficiently loading cyclic associations with JPA
+# How the functional API evolved after Java 8
 
-Loading data with one SQL query and disrupting the circular references to enable serialization as a JSON. It sounds simple, but is tricky.
-Sample code for my post https://marian-caikovski.medium.com/efficiently-loading-cyclic-associations-with-jpa-73488e8730c comparing JPA and JDBC
+In addition to Stream.toList(), what other modern methods can simplify Java code?
+Sample code for post https://marian-caikovski.medium.com/how-the-functional-api-evolved-after-java-8-63e5436fec35 about modern methods in the stream API.
